@@ -156,26 +156,25 @@ public class InventoryGUI extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
-        getContentPane().setBackground(paleBlue); // Use paleBlue
+        getContentPane().setBackground(paleBlue); 
 
         // HEADER 
         JLabel heading = new JLabel("Welcome to Y.A.Z Inventory Management System", JLabel.CENTER);
-        heading.setFont(headingFont); // Use headingFont
+        heading.setFont(headingFont);
         heading.setBorder(BorderFactory.createEmptyBorder(20, 10, 20, 10)); 
-        heading.setForeground(darkBlue); // Use darkBlue
+        heading.setForeground(darkBlue); 
         add(heading, BorderLayout.NORTH);
 
         // MAIN CENTER PANEL (CardLayout)
         cardLayout = new CardLayout();
         mainContentPanel = new JPanel(cardLayout);
-        mainContentPanel.setBackground(paleBlue); // Use paleBlue
+        mainContentPanel.setBackground(paleBlue); 
         add(mainContentPanel, BorderLayout.CENTER);
 
         // All screen panels
         mainContentPanel.add(createMainMenuPanel(), "Menu");
         mainContentPanel.add(createAddProductPanel(), "AddProduct");
-        // We create the view panel only once on startup
-        mainContentPanel.add(createViewProductsPanel(), viewCardName); // Use viewCardName
+        mainContentPanel.add(createViewProductsPanel(), viewCardName); 
         mainContentPanel.add(createUpdateProductPanel(), "UpdateProduct");
         mainContentPanel.add(createDeleteProductPanel(), "DeleteProduct");
         mainContentPanel.add(createSearchProductPanel(), "SearchProduct");
@@ -183,12 +182,12 @@ public class InventoryGUI extends JFrame {
 
         // FOOTER 
         JPanel footerPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        footerPanel.setBackground(paleBlue); // Use paleBlue
+        footerPanel.setBackground(paleBlue); 
         footerPanel.setBorder(new EmptyBorder(5, 5, 5, 10)); 
         
         totalLabel = new JLabel("Total Items: " + manager.getProductCount());
-        totalLabel.setFont(mainFont); // Use mainFont
-        totalLabel.setForeground(darkBlue); // Use darkBlue
+        totalLabel.setFont(mainFont); 
+        totalLabel.setForeground(darkBlue); 
         footerPanel.add(totalLabel);
         
         add(footerPanel, BorderLayout.SOUTH);
@@ -197,16 +196,15 @@ public class InventoryGUI extends JFrame {
     }
     
     // HELPER METHODS
-
     private void updateTotalLabel() {
         totalLabel.setText("Total Items: " + manager.getProductCount());
     }
 
     private JButton createMenuButton(String text, String cardName) {
         JButton btn = new JButton(text);
-        btn.setFont(mainFont.deriveFont(Font.BOLD, 18f)); // Use mainFont
-        btn.setBackground(white); // Use white
-        btn.setForeground(darkBlue); // Use darkBlue
+        btn.setFont(mainFont.deriveFont(Font.BOLD, 18f)); 
+        btn.setBackground(white); 
+        btn.setForeground(darkBlue); 
         btn.setPreferredSize(new Dimension(300, 50)); 
         btn.setFocusPainted(false);
         
@@ -214,10 +212,9 @@ public class InventoryGUI extends JFrame {
             if (cardName.equals("Exit")) {
                 System.exit(0);
             }
-            if (cardName.equals(viewCardName)) { // Use viewCardName
-                // MODIFIED: Call the simpler update method
+            if (cardName.equals(viewCardName)) { 
                 updateViewProductsPanel(); 
-                cardLayout.show(mainContentPanel, viewCardName); // Use viewCardName
+                cardLayout.show(mainContentPanel, viewCardName); 
             } else {
                 cardLayout.show(mainContentPanel, cardName);
             }
@@ -238,7 +235,7 @@ public class InventoryGUI extends JFrame {
         // Set the text of the class member JTextArea
         if (viewTextArea != null) {
             viewTextArea.setText(sb.toString());
-            viewTextArea.setCaretPosition(0); // Scroll to top
+            viewTextArea.setCaretPosition(0); 
         }
     }
 
@@ -256,24 +253,24 @@ public class InventoryGUI extends JFrame {
 
     private JButton createBackButton() {
         JButton btn = new JButton("Back to Menu");
-        btn.setFont(mainFont); // Use mainFont
-        btn.setBackground(white); // Use white
-        btn.setForeground(darkBlue); // Use darkBlue
+        btn.setFont(mainFont); 
+        btn.setBackground(white); 
+        btn.setForeground(darkBlue); 
         btn.setFocusPainted(false);
         btn.addActionListener(e -> cardLayout.show(mainContentPanel, "Menu"));
         return btn;
     }
     
     private void styleLabel(JLabel label) {
-        label.setFont(mainFont); // Use mainFont
-        label.setForeground(darkBlue); // Use darkBlue
+        label.setFont(mainFont); 
+        label.setForeground(darkBlue); 
     }
     
     private JButton createActionFormButton(String text) {
         JButton btn = new JButton(text);
-        btn.setFont(mainFont); // Use mainFont
-        btn.setBackground(white); // Use white
-        btn.setForeground(darkBlue); // Use darkBlue
+        btn.setFont(mainFont);
+        btn.setBackground(white); 
+        btn.setForeground(darkBlue); 
         return btn;
     }
 
@@ -281,14 +278,14 @@ public class InventoryGUI extends JFrame {
     private JPanel createMainMenuPanel() {
         JPanel panel = new JPanel();
         panel.setLayout(new GridBagLayout()); 
-        panel.setBackground(paleBlue); // Use paleBlue
+        panel.setBackground(paleBlue); 
         
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(10, 0, 10, 0); 
         gbc.gridx = 0; 
         
         panel.add(createMenuButton("1. Add Product", "AddProduct"), gbc);
-        panel.add(createMenuButton("2. View All Products", viewCardName), gbc); // Use viewCardName
+        panel.add(createMenuButton("2. View All Products", viewCardName), gbc); 
         panel.add(createMenuButton("3. Update Product", "UpdateProduct"), gbc);
         panel.add(createMenuButton("4. Delete Product", "DeleteProduct"), gbc);
         panel.add(createMenuButton("5. Search Product by ID", "SearchProduct"), gbc);
@@ -299,23 +296,23 @@ public class InventoryGUI extends JFrame {
     
     private JPanel createAddProductPanel() {
         JPanel panel = new JPanel(new BorderLayout(10, 10));
-        panel.setBackground(paleBlue); // Use paleBlue
+        panel.setBackground(paleBlue); 
         panel.setBorder(new EmptyBorder(50, 100, 50, 100)); 
 
         // Form Panel
         JPanel formPanel = new JPanel(new GridLayout(6, 2, 10, 10));
-        formPanel.setBackground(paleBlue); // Use paleBlue
+        formPanel.setBackground(paleBlue); 
         
-        JTextField idField = new JTextField(15); idField.setFont(mainFont); // Use mainFont
-        JTextField nameField = new JTextField(15); nameField.setFont(mainFont); // Use mainFont
-        JTextField priceField = new JTextField(15); priceField.setFont(mainFont); // Use mainFont
-        JTextField qtyField = new JTextField(15); qtyField.setFont(mainFont); // Use mainFont
-        JCheckBox perishableCheck = new JCheckBox("Is Perishable?"); perishableCheck.setFont(mainFont); // Use mainFont
-        JTextField expiryField = new JTextField(15); expiryField.setFont(mainFont); // Use mainFont
+        JTextField idField = new JTextField(15); idField.setFont(mainFont); 
+        JTextField nameField = new JTextField(15); nameField.setFont(mainFont); 
+        JTextField priceField = new JTextField(15); priceField.setFont(mainFont); 
+        JTextField qtyField = new JTextField(15); qtyField.setFont(mainFont); 
+        JCheckBox perishableCheck = new JCheckBox("Is Perishable?"); perishableCheck.setFont(mainFont); 
+        JTextField expiryField = new JTextField(15); expiryField.setFont(mainFont); 
         
         expiryField.setEnabled(false);
-        perishableCheck.setBackground(paleBlue); // Use paleBlue
-        perishableCheck.setForeground(darkBlue); // Use darkBlue
+        perishableCheck.setBackground(paleBlue); 
+        perishableCheck.setForeground(darkBlue); 
         perishableCheck.addItemListener(e -> {
             expiryField.setEnabled(e.getStateChange() == ItemEvent.SELECTED);
             if (e.getStateChange() != ItemEvent.SELECTED) {
@@ -339,21 +336,21 @@ public class InventoryGUI extends JFrame {
 
         // Control Panel
         JPanel controlPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
-        controlPanel.setBackground(paleBlue); // Use paleBlue
+        controlPanel.setBackground(paleBlue); 
         JButton saveButton = createActionFormButton("Save Product");
         
         controlPanel.add(saveButton);
         controlPanel.add(createBackButton());
         
         JLabel screenTitle = new JLabel("Add New Product", JLabel.CENTER);
-        screenTitle.setFont(subHeadingFont); // Use subHeadingFont
-        screenTitle.setForeground(darkBlue); // Use darkBlue
+        screenTitle.setFont(subHeadingFont); 
+        screenTitle.setForeground(darkBlue); 
 
         panel.add(screenTitle, BorderLayout.NORTH);
         panel.add(formPanel, BorderLayout.CENTER);
         panel.add(controlPanel, BorderLayout.SOUTH);
         
-        // Save Button Action (Added new exception handling)
+        // Save Button Action
         saveButton.addActionListener(e -> {
             try {
                 String id = idField.getText().trim();
@@ -373,7 +370,7 @@ public class InventoryGUI extends JFrame {
                     newProduct = new Product(id, name, price, qty);
                 }
                 
-                manager.addProduct(newProduct); // This throws DuplicateProductException
+                manager.addProduct(newProduct); 
                 
                 JOptionPane.showMessageDialog(this, "Product added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
                 updateTotalLabel();
@@ -397,12 +394,12 @@ public class InventoryGUI extends JFrame {
     
     private JPanel createViewProductsPanel() {
         JPanel panel = new JPanel(new BorderLayout(10, 10));
-        panel.setBackground(paleBlue); // Use paleBlue
+        panel.setBackground(paleBlue); 
         panel.setBorder(new EmptyBorder(20, 50, 20, 50)); 
         
         JLabel titleLabel = new JLabel("Current Inventory List", JLabel.CENTER);
-        titleLabel.setFont(subHeadingFont); // Use subHeadingFont
-        titleLabel.setForeground(darkBlue); // Use darkBlue
+        titleLabel.setFont(subHeadingFont); 
+        titleLabel.setForeground(darkBlue); 
         panel.add(titleLabel, BorderLayout.NORTH);
 
         // We call the update method to populate the StringBuilder for the initial view
@@ -418,17 +415,17 @@ public class InventoryGUI extends JFrame {
         // ASSIGN JTEXTAREA TO THE CLASS MEMBER
         viewTextArea = new JTextArea(sb.toString());
         viewTextArea.setEditable(false);
-        viewTextArea.setFont(mainFont); // Use mainFont
-        viewTextArea.setForeground(darkBlue); // Use darkBlue
-        viewTextArea.setBackground(white); // Use white
+        viewTextArea.setFont(mainFont); 
+        viewTextArea.setForeground(darkBlue); 
+        viewTextArea.setBackground(white); 
 
         JScrollPane scroll = new JScrollPane(viewTextArea);
-        scroll.setBorder(BorderFactory.createLineBorder(darkBlue)); // Use darkBlue
+        scroll.setBorder(BorderFactory.createLineBorder(darkBlue)); 
         
         panel.add(scroll, BorderLayout.CENTER);
 
         JPanel controlPanel = new JPanel();
-        controlPanel.setBackground(paleBlue); // Use paleBlue
+        controlPanel.setBackground(paleBlue); 
         controlPanel.add(createBackButton());
         panel.add(controlPanel, BorderLayout.SOUTH);
 
@@ -437,21 +434,21 @@ public class InventoryGUI extends JFrame {
 
     private JPanel createUpdateProductPanel() {
         JPanel panel = new JPanel(new BorderLayout(10, 10));
-        panel.setBackground(paleBlue); // Use paleBlue
+        panel.setBackground(paleBlue); 
         panel.setBorder(new EmptyBorder(50, 100, 50, 100));
 
         JLabel titleLabel = new JLabel("Update Existing Product", JLabel.CENTER);
-        titleLabel.setFont(subHeadingFont); // Use subHeadingFont
-        titleLabel.setForeground(darkBlue); // Use darkBlue
+        titleLabel.setFont(subHeadingFont); 
+        titleLabel.setForeground(darkBlue);
         panel.add(titleLabel, BorderLayout.NORTH);
         
         // Form Setup 
         JPanel formPanel = new JPanel(new GridLayout(4, 2, 10, 10));
-        formPanel.setBackground(paleBlue); // Use paleBlue
+        formPanel.setBackground(paleBlue); 
         
-        JTextField idField = new JTextField(15); idField.setFont(mainFont); // Use mainFont
-        JTextField priceField = new JTextField(15); priceField.setFont(mainFont); // Use mainFont
-        JTextField qtyField = new JTextField(15); qtyField.setFont(mainFont); // Use mainFont
+        JTextField idField = new JTextField(15); idField.setFont(mainFont); 
+        JTextField priceField = new JTextField(15); priceField.setFont(mainFont); 
+        JTextField qtyField = new JTextField(15); qtyField.setFont(mainFont); 
 
         // MODIFIED LABELS
         JLabel idLabel = new JLabel("Product ID (0XX):"); styleLabel(idLabel);
@@ -467,7 +464,7 @@ public class InventoryGUI extends JFrame {
         
         // Control Setup
         JPanel controlPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
-        controlPanel.setBackground(paleBlue); // Use paleBlue
+        controlPanel.setBackground(paleBlue); 
         JButton updateButton = createActionFormButton("Update Product");
         
         controlPanel.add(updateButton);
@@ -509,26 +506,24 @@ public class InventoryGUI extends JFrame {
                 JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage(), "Input Error", JOptionPane.ERROR_MESSAGE);
             }
         });
-        
         return panel;
     }
     
     private JPanel createDeleteProductPanel() {
         JPanel panel = new JPanel(new BorderLayout(10, 10));
-        panel.setBackground(paleBlue); // Use paleBlue
+        panel.setBackground(paleBlue); 
         panel.setBorder(new EmptyBorder(100, 200, 100, 200));
 
         JLabel titleLabel = new JLabel("Delete Product by ID", JLabel.CENTER);
-        titleLabel.setFont(subHeadingFont); // Use subHeadingFont
-        titleLabel.setForeground(darkBlue); // Use darkBlue
+        titleLabel.setFont(subHeadingFont); 
+        titleLabel.setForeground(darkBlue); 
         panel.add(titleLabel, BorderLayout.NORTH);
 
         // Form Setup 
         JPanel formPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
-        formPanel.setBackground(paleBlue); // Use paleBlue
+        formPanel.setBackground(paleBlue); 
+        JTextField idField = new JTextField(15); idField.setFont(mainFont); 
         
-        JTextField idField = new JTextField(15); idField.setFont(mainFont); // Use mainFont
-        // MODIFIED LABEL
         JLabel idLabel = new JLabel("Enter Product ID (0XX):"); styleLabel(idLabel);
         JButton deleteButton = createActionFormButton("Delete Product");
         
@@ -537,7 +532,7 @@ public class InventoryGUI extends JFrame {
         
         // Control Setup 
         JPanel controlPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
-        controlPanel.setBackground(paleBlue); // Use paleBlue
+        controlPanel.setBackground(paleBlue); 
         
         controlPanel.add(deleteButton);
         controlPanel.add(createBackButton());
@@ -573,20 +568,19 @@ public class InventoryGUI extends JFrame {
     
     private JPanel createSearchProductPanel() {
         JPanel panel = new JPanel(new BorderLayout(10, 10));
-        panel.setBackground(paleBlue); // Use paleBlue
+        panel.setBackground(paleBlue); 
         panel.setBorder(new EmptyBorder(50, 100, 50, 100));
 
         JLabel titleLabel = new JLabel("Search Product by ID", JLabel.CENTER);
-        titleLabel.setFont(subHeadingFont); // Use subHeadingFont
-        titleLabel.setForeground(darkBlue); // Use darkBlue
+        titleLabel.setFont(subHeadingFont); 
+        titleLabel.setForeground(darkBlue); 
         panel.add(titleLabel, BorderLayout.NORTH);
 
         // Form Setup
         JPanel formPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
-        formPanel.setBackground(paleBlue); // Use paleBlue
+        formPanel.setBackground(paleBlue); 
         
-        JTextField idField = new JTextField(15); idField.setFont(mainFont); // Use mainFont
-        // MODIFIED LABEL
+        JTextField idField = new JTextField(15); idField.setFont(mainFont); 
         JLabel idLabel = new JLabel("Enter Product ID (0XX):"); styleLabel(idLabel);
         JButton searchButton = createActionFormButton("Search");
         
@@ -596,13 +590,13 @@ public class InventoryGUI extends JFrame {
         // Results Panel 
         JTextArea resultArea = new JTextArea(5, 40);
         resultArea.setEditable(false);
-        resultArea.setFont(mainFont); // Use mainFont
-        resultArea.setForeground(darkBlue); // Use darkBlue
-        resultArea.setBackground(white); // Use white
+        resultArea.setFont(mainFont); 
+        resultArea.setForeground(darkBlue); 
+        resultArea.setBackground(white); 
         JScrollPane scroll = new JScrollPane(resultArea);
         
         JPanel centerPanel = new JPanel(new BorderLayout(10, 10));
-        centerPanel.setBackground(paleBlue); // Use paleBlue
+        centerPanel.setBackground(paleBlue); 
         centerPanel.add(formPanel, BorderLayout.NORTH);
         centerPanel.add(scroll, BorderLayout.CENTER);
         panel.add(centerPanel, BorderLayout.CENTER);
@@ -610,10 +604,8 @@ public class InventoryGUI extends JFrame {
         // Control Setup 
         JPanel controlPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
         controlPanel.setBackground(paleBlue); // Use paleBlue
-        
         controlPanel.add(searchButton);
         controlPanel.add(createBackButton());
-        
         panel.add(controlPanel, BorderLayout.SOUTH);
 
         // Action Listener
